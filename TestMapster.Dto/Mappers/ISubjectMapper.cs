@@ -1,14 +1,9 @@
 ﻿using Mapster;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestMapster.Library.Models;
 using TestMapster.Dtos.Dtos;
 using System.Linq.Expressions;
 
-namespace TestMapster.Library.Mappers
+namespace TestMapster.Dtos.Mappers
 {
     [Mapper]
     public interface ISubjectMapper

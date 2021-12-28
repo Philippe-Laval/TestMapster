@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Extensions.Logging;
 using TestMapster.Dtos.Dtos;
+using TestMapster.Dtos.Mappers;
 using TestMapster.Library.Models;
 
 Console.WriteLine("Hello, World!");
@@ -25,8 +26,8 @@ var builder = new HostBuilder()
     .ConfigureServices((hostContext, services) =>
     {
         services.AddSingleton<IFooService, FooService>();
-
-        //services.AddHttpClient();
+        services.AddSingleton<ISubjectMapper, TestMapster.Dtos.Mappers.SubjectMapper>();
+        services.AddSingleton<IStudentMapper, TestMapster.Dtos.Mappers.StudentMapper>();
 
         services.AddLogging(config =>
         {
@@ -73,6 +74,28 @@ var authorDto2 = new AuthorDto { Firstname = "xx", Lastname = "xx" };
 
 author.AdaptTo(authorDto2);
 
+
+#endregion
+
+#region Basic usage using ISubjectMapper generated code with Mapster.Tool
+
+IServiceProvider services = app.Services;
+using (var scope = services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    ISubjectMapper? subjectMapper = serviceProvider.GetService<ISubjectMapper>();
+    if (subjectMapper != null)
+    {
+        var subject = new Subject { Name = "Mapster" };
+        var subjectDto = subjectMapper.Map(subject);
+
+        Log.Debug($"{subject.Name} {subjectDto.Name}");
+
+        var subjectDto2 = new SubjectDto { Name = "xx" };
+        subjectMapper.Map(subject, subjectDto2);
+    }
+
+}
 
 #endregion
 
