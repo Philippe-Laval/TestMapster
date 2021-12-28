@@ -21,19 +21,6 @@
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="Dtos\CustomerMapper.tt">
-		  <Generator>TextTemplatingFileGenerator</Generator>
-		  <LastGenOutput>CustomerMapper.g.cs</LastGenOutput>
-		</None>
-		<None Update="TextTemplate1.tt">
-		  <Generator>TextTemplatingFileGenerator</Generator>
-		  <LastGenOutput>TextTemplate1.txt</LastGenOutput>
-		</None>
-		<None Update="TextTemplate1.txt">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>TextTemplate1.tt</DependentUpon>
-		</None>
 	</ItemGroup>
 	
 	<Target Name="Mapster">
@@ -49,29 +36,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="Dtos\CustomerMapper.g.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>CustomerMapper.tt</DependentUpon>
-	  </None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Mapster\src\ExpressionDebugger\ExpressionDebugger.csproj" />
-	  <ProjectReference Include="..\..\Mapster\src\ExpressionTranslator\ExpressionTranslator.csproj" />
 	  <ProjectReference Include="..\..\Mapster\src\Mapster\Mapster.csproj" />
+	  <ProjectReference Include="..\TestMapster.Dto\TestMapster.Dto.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Dtos\CustomerMapper.g.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>CustomerMapper.tt</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 	<Target Name="CleanGenerated">

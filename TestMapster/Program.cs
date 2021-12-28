@@ -1,14 +1,12 @@
-﻿// https://medium.com/swlh/build-a-command-line-interface-cli-program-with-net-core-428c4c85221
-
-using Mapster;
+﻿using Mapster;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Extensions.Logging;
-using TestMapster.Dtos;
-using TestMapster.Models;
+using TestMapster.Dtos.Dtos;
+using TestMapster.Library.Models;
 
 Console.WriteLine("Hello, World!");
 
@@ -49,7 +47,7 @@ await app.StartAsync();
 
 // https://github.com/MapsterMapper/Mapster
 
-// Basic usage
+#region Basic usage using reflexion and expression
 
 var source = new Source {Prop1 = "1", Prop2 = "2"};
 
@@ -64,18 +62,36 @@ source.Adapt(existingDto);
 
 Log.Debug($"{existingDto.Prop1} {existingDto.Prop2}");
 
+#endregion
+
+#region Basic usage using generated code with Mapster.Tool
+
+var author = new Author { Firstname = "Philippe", Lastname = "Laval" };
+var authorDto = author.AdaptToDto();
+
+var authorDto2 = new AuthorDto { Firstname = "xx", Lastname = "xx" };
+
+author.AdaptTo(authorDto2);
+
+
+#endregion
+
+await app.StopAsync();
+
+
+// How to generate the DTO and mapping :
+// C:\Users\philippe\source\repos\Philippe-Laval\TestMapster\TestMapster.Dto\MyRegister.cs
+
 // dotnet tool install -g Mapster.Tool
 // See entries in csproj file
 // dotnet msbuild -t:Mapster
 // dotnet msbuild -t:CleanGenerated
 
+// https://github.com/RdJNL/TextTemplatingCore*/
 
-// dotnet mapster model -a
-// dotnet mapster model -a "C:\Users\philippe\source\repos\TestMapster\TestMapster\bin\Debug\net6.0\TestMapster.dll" -n TestMapster.Dtos -o Dtos
-// cd C:\Users\philippe\source\repos\TestMapster\TestMapster
-// C:\Users\philippe\Downloads\Mapster-master\src\Mapster.Tool\bin\Debug\net6.0\Mapster.Tool.exe model -a "C:\Users\philippe\source\repos\TestMapster\TestMapster\bin\Debug\net6.0\TestMapster.dll" -n TestMapster.Dtos -o Dtos
-// C:\Users\philippe\Downloads\Mapster-master\src\Mapster.Tool\bin\Debug\net6.0\Mapster.Tool.exe extension -a "C:\Users\philippe\source\repos\TestMapster\TestMapster\bin\Debug\net6.0\TestMapster.dll" -n TestMapster.Dtos -o Dtos
-// C:\Users\philippe\Downloads\Mapster-master\src\Mapster.Tool\bin\Debug\net6.0\Mapster.Tool.exe mapper -a "C:\Users\philippe\source\repos\TestMapster\TestMapster\bin\Debug\net6.0\TestMapster.dll" -n TestMapster.Mappers -o Mappers
+// Mono.TextTemplating is an open-source implementation of the T4 text templating engine, a simple general-purpose way to use C# to generate any kind of text files.
+// https://github.com/mono/t4
+
+// https://medium.com/swlh/build-a-command-line-interface-cli-program-with-net-core-428c4c85221
 
 
-await app.StopAsync();

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dtos\CustomerMapper.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Dtos\CustomerMapper.g.cs">
+      <DependentUpon>CustomerMapper.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Mapster\src\ExpressionDebugger\ExpressionDebugger.csproj" />
+    <ProjectReference Include="..\..\Mapster\src\ExpressionTranslator\ExpressionTranslator.csproj" />
+    <ProjectReference Include="..\..\Mapster\src\Mapster\Mapster.csproj" />
+    <ProjectReference Include="..\TestMapster.Library\TestMapster.Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Dtos\CustomerMapper.tt">
+      <LastGenOutput>CustomerMapper.g.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

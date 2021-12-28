@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using TestMapster.Dtos;
-using TestMapster.Models;
+using TestMapster.Dtos.Dtos;
+using TestMapster.Library.Models;
 
 namespace TestMapster.Mappers
 {

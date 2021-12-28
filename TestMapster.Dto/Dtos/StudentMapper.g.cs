@@ -1,7 +1,9 @@
-using TestMapster.Dtos;
-using TestMapster.Models;
+using System;
+using System.Linq.Expressions;
+using TestMapster.Dtos.Dtos;
+using TestMapster.Library.Models;
 
-namespace TestMapster.Dtos
+namespace TestMapster.Dtos.Dtos
 {
     public static partial class StudentMapper
     {
@@ -21,5 +23,6 @@ namespace TestMapster.Dtos
             return result;
             
         }
+        public static Expression<Func<Student, StudentDto>> ProjectToDto => p4 => new StudentDto() {Name = p4.Name};
     }
 }

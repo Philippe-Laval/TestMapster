@@ -1,4 +1,4 @@
-namespace TestMapster.Dtos
+namespace TestMapster.Dtos.Dtos
 {
     public partial class StudentDto
     {

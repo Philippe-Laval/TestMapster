@@ -1,10 +1,10 @@
 using System;
 using System.Linq.Expressions;
-using TestMapster.Dtos;
+using TestMapster.Dtos.Dtos;
+using TestMapster.Library.Models;
 using TestMapster.Mappers;
-using TestMapster.Models;
 
-namespace TestMapster.Mappers
+namespace TestMapster.Dtos.Mappers
 {
     public partial class StudentMapper : IStudentMapper
     {

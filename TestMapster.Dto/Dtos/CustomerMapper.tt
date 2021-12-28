@@ -1,18 +1,23 @@
 ﻿<#@ template debug="true" language="C#" #>
 <#@ output extension=".g.cs" #>
+<#@ Assembly Name="C:\Program Files\dotnet\sdk\6.0.101\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\netstandard.dll" #>
+<#@ Assembly Name="C:\Program Files\dotnet\sdk\6.0.101\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.dll" #>
 <# /*@ Assembly Name="/usr/local/share/dotnet/sdk/2.2.103/Microsoft/Microsoft.NET.Build.Extensions/net461/lib/netstandard.dll" */ #>
-<#@ Assembly Name="netstandard" #>
+<# /*@ Assembly Name="netstandard" */ #>
+<# /*@ Assembly Name="System.Runtime" */ #>
+<# /*@ assembly name="System.Runtime, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" */ #>
 <#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="System.Runtime" #>
 <#@ Assembly Name="System.Linq.Expressions" #>
 <#@ Assembly Name="$(TargetDir)/$(ProjectName).dll" #>
 <#@ Assembly Name="$(TargetDir)/Mapster.dll" #>
 <#@ Assembly Name="$(TargetDir)/ExpressionTranslator.dll" #>
-<#@ import namespace="TestMapster.Models" #>
-<#@ import namespace="TestMapster.Dtos" #>
+<#@ Assembly Name="$(TargetDir)/TestMapster.Library.dll" #>
+<#@ import namespace="TestMapster.Library.Models" #>
+<#@ import namespace="TestMapster.Dtos.Dtos" #>
 <#@ import namespace="ExpressionDebugger" #>
 <#@ import namespace="Mapster" #>
 <# 
+/*
 /*
     TypeAdapterConfig.GlobalSettings.SelfContainedCodeGeneration = true;
     var foo = default(Customer);
@@ -24,7 +29,7 @@
         TypeName = "CustomerMapper"
     };
     var code = foo.BuildAdapter()
-        .CreateMapExpression<CustomerDTO>()
+        .CreateMapExpression<CustomerDto>()
         .ToScript(def);
     WriteLine(code); 
 */

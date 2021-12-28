@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestMapster.Models
+namespace TestMapster.Dtos.Dtos
 {
-    public class Address
+    public partial class AddressDto
     {
         public int Id { get; set; }
         public string Street { get; set; }
