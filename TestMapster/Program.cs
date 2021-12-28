@@ -59,7 +59,7 @@ var destObject = source.Adapt<SourceDto>();
 Log.Debug($"{destObject.Prop1} {destObject.Prop2}");
 
 // Mapping to an existing object
-var existingDto = new SourceDto { Prop1 = "2",Prop2 = "3"};
+var existingDto = new SourceDto { Prop1 = "3", Prop2 = "4"};
 source.Adapt(existingDto);
 
 Log.Debug($"{existingDto.Prop1} {existingDto.Prop2}");
